@@ -2,7 +2,7 @@ import torch
 def test_gene_graph_symmetry():
     data = torch.load("scgenept_gene_graph/gene_graph_pyg.pt", weights_only=False)
 
-    edge_set = set(zip(data.edge_index[0].tolist(), data.edge_index[1].tolist()))
+    edge_set = set(zip(data.edge_index[0].tolist(), data.edge_index[1].tolist())) 
     edge_weight_lookup = {(s, d): w for (s, d), w in
                         zip(zip(data.edge_index[0].tolist(), data.edge_index[1].tolist()),
                             data.edge_attr.squeeze().tolist())}
