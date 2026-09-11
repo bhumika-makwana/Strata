@@ -6,7 +6,7 @@ from gears import PertData
 data_path = "./data"
 if not os.path.exists(data_path):
     os.makedirs(data_path)
-
+    
 pert_data = PertData(data_path) #Initialize PertData Loader
 pert_data.load(data_name="norman")
 pert_data.prepare_split(split='combo_seen2', seed=42) #Create Train/Validation/Test Splits -"combo_seen2" split to ensure 2-gene combinations are completely hidden from training.
