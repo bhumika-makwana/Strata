@@ -1,2 +1,2 @@
 # Strata
-Mechanistically-informed model structures for transcriptomics perturbation effect prediction.
+Mechanistically-informed model structures for transcriptomics perturbation effect prediction. 
