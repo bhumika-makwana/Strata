@@ -1,4 +1,4 @@
-#### Strata
+## Strata
 Mechanistically-informed model structures for transcriptomics perturbation effect prediction. 
 
 Strata is a research framework for predicting transcriptional responses to genetic perturbations using single-cell RNA-seq data and curated molecular interaction priors.
