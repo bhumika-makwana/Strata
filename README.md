@@ -14,3 +14,56 @@ We use the Norman et al. (2019) Perturb-seq dataset as the primary experimental 
 | **OmniPath**    | Curated molecular and signaling interaction network     | **Signaling and protein-level interactions** |
 | **Norman 2019** | Single-cell gene expression under genetic perturbations | **Perturbation-response data**               |
 
+
+**Architecture** - 
+
+                         ┌──────────────────────┐
+                         │      G_prior         │
+                         │ CollecTRI + OmniPath │
+                         └──────────┬───────────┘
+                                    │
+                              initialization
+                                    ▼
+                         ┌──────────────────────┐
+                         │  Learnable Gene      │
+                         │  Interaction Graph   │
+                         │        Gθ            │
+                         └──────────┬───────────┘
+                                    │
+                                    │ guide
+                                    ▼
+┌────────────────┐       ┌──────────────────────┐
+│ Control        │       │ Graph-Guided         │
+│ expression     ├──────►│ Transformer          │
+│                │       │                      │
+│ Perturbations  ├──────►│ Gene tokens          │
+└────────────────┘       │ Attention × 2        │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │ Predicted            │
+                         │ post-perturbation    │
+                         │ expression           │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                              ┌───────────┐
+                              │   Loss    │
+                              │ MSE +     │
+                              │ Graph     │
+                              │ regular.  │
+                              └─────┬─────┘
+                                    │
+                              backpropagation
+                                    │
+                 ┌──────────────────┴──────────────────┐
+                 │                                     │
+                 ▼                                     ▼
+        Update model parameters              Update Gθ
+                 │                                     │
+                 └──────────────────┬──────────────────┘
+                                    │
+                                    │ repeat every
+                                    │ training step
+                                    └───────────────►
