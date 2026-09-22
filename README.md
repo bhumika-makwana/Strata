@@ -3,7 +3,7 @@ Mechanistically-informed model structures for transcriptomics perturbation effec
 
 Strata is a research framework for predicting transcriptional responses to genetic perturbations using single-cell RNA-seq data and curated molecular interaction priors.
 
-The core contribution - A learnable, biologically guided perturbation-propagation model that uses curated gene regulatory/signaling networks as a prior to model genetic perturbations across the transcriptome and generalize to unseen gene combinations.
+**Core contribution** - A learnable, biologically guided perturbation-propagation model that uses curated gene regulatory/signaling networks as a prior to model genetic perturbations across the transcriptome and generalize to unseen gene combinations.
 
 #### Hypothesis
 We hypothesize that gene-level perturbation responses are coupled through the underlying regulatory and signaling topology of the cell, rather than independent. Strata encodes this coupling structurally: a learnable gene interaction matrix modulates pairwise attention between gene representations, constraining the transformer to route information along biologically plausible interaction paths.
